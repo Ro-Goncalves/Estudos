@@ -38,6 +38,28 @@ Para evitar que algumas topeira pensem assim, podemos dar um pouco mais de conte
 
 A partir daqui é só refletir o que essa máxima quer dizer. Pois ao meu ver, é ajuda tanto quanto atrapalha, o que é "somente um motivo"? Eu me debato sobre isso até hoje, uma coisa é pegar um exemplo pronto na internet e deixer que entendeu, outra é fazer um do zero, somente você e Deus.
 
+Então, evoluiremos nosso código para isso, criar classes que representem alguma funcionalidade, ou regra de negocio. Aparentemente os desenvolvedores tendem a chamar essas classes de *service*, ou utilizar um verbo com nome, essa observação é minha, e discuti comigo mesmo no carro a caminho de casa. Vamos ver se consigo explicar, no centro do nosso software temos a regra de negocio, aquilo cujo qual diz o que o nosso código faz. Todo padrão de design que usamos tenta isolar essa camada. Bem é nessa camada que as coisas acontecem, é ela que cria, utilizando das outras como suporte, por exemplo ela utiliza a camada de infraestrutura para consutlar alguma coisa, e realizar algum operação. E creio ser por isso que nessa camada os nomes das classes tentem a ser um verbo, ou *Service*.
+
+Posso tentar escrever isso um pouco melhor em algum outro momento, quem sabe quando resolver falar sobre Port and Adapter. Por hora o que importa é:
+
+- [X] Terceira Pena.
+
+Outra coisa que é legal ter, ter nossos objetos do mundo real bem representando dentro do código. Por exemplo, se eu tenho um Pet que possui nome, idade, raça, etc. é interessante criar um classe que o represente. E é esse o ponto que iremos tratar agora, criar os objetos do mundo real que fazem parte do nosso dominio. Essa é uma outra camada que podemos encontar em vários modelos de design de código. Um resumo é o que puz aqui, ela contém os objetos do mundo real, crieos pelo amor de Deus.
+
+- [X] Quarta Pena.
+
+## Testes Automatizados
+
+A ideia é sempre evoluir e melhorar a nós mesmos, ser anti-frágil, temos que ter a mesma ideia quanto ao nosso código. Ele deve estar sempre mudando, para melhor, e resistir a essas mudançar. É possível conseguir fazer isso com teste, se eles forem bem escritos nossa lógica pode resistir a qualquer alteração, nos dando confiança para melhorar a nós mesmos, aprendendo novas tecnicas de programação, e ao código, quando aplicarmos essas técnicas nele.
+
+Para conseguirmos realizar os testes com sucesso e separa testes de unidade dos de integração, é preciso que nosso código tenha um certo padrão, principalmente no tocante às dependências. Já evoluimos estamos caminhando nessa estrada, continuaremos e iremos *"ao infinito e além"*.
+
+O objetivo aqui não é explicar a fundo como funciona testes e tudo mais, só falar que no processo de refatoração os testes são importantes. E eles ajudam na refatoração, dando segurança.
+
+Fez os testes no seu código? Então:
+
+- [X] Quinta Pena.
+
 ## Referências
 
 - [REFACTORING GURU, Catálogo refatoração](https://refactoring.guru/pt-br/refactoring/catalog)

@@ -5,6 +5,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class ClientHttpConfiguration {
@@ -18,12 +19,12 @@ public class ClientHttpConfiguration {
         return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public HttpResponse<String> dispararRequisicaoPost(String uri, JsonObject json) throws Exception{
+    public HttpResponse<String> dispararRequisicaoPost(String uri, Object object) throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(uri))
             .header("Content-Type", "application/json")
-            .method("POST", HttpRequest.BodyPublishers.ofString(json.toString()))
+            .method("POST", HttpRequest.BodyPublishers.ofString(new Gson().toJson(object)))
             .build();
 
         return client.send(request, HttpResponse.BodyHandlers.ofString());
