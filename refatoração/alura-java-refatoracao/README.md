@@ -60,9 +60,16 @@ Fez os testes no seu código? Então:
 
 - [X] Quinta Pena.
 
+## Padrão de Projeto Command
+
+Você não é o primeiro que está resolvendo esse problema, nunca será. Para ajudar em alguns pontos, temos alguns padrões de projetos que foram criados, eles resolvem a maioria de nossos problema. Por exemplo, a nossa classe `Main`, atualmente, está instânciando muitas outras classes, o que cria um certo acoplamento, acoplamento MAU. E temos uma cambada de `ifs` também, ifs MAUS. Vamos tentar nos livar deles.
+
+Para tal, usaremos o padrão de projeto Command
+
 ## Referências
 
 - [REFACTORING GURU, Catálogo refatoração](https://refactoring.guru/pt-br/refactoring/catalog)
 - [RAFAEL SOUZA, Não Se Repita (DRY Don’t Repeat Yourself)](https://medium.com/@rafaelsouzaim/n%C3%A3o-se-repita-dry-dont-repeat-yourself-40da33289bcf)
 - [JOÃO ROBERTO PAIXÃO - O que é SOLID: O guia completo para você entender os 5 princípios da POO](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
+- [Refactorin]
   
