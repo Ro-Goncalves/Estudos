@@ -1,4 +1,4 @@
-package br.com.alura.service;
+package br.com.alura.domain.pet.core;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.alura.client.ClientHttpConfiguration;
-import br.com.alura.domain.Pet;
+import br.com.alura.domain.pet.core.model.Pet;
+import br.com.alura.infrastructure.ClientHttpConfiguration;
 
 public class PetService {
     ClientHttpConfiguration client;

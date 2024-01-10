@@ -1,6 +1,12 @@
-package br.com.alura;
+package br.com.alura.application.cli;
 
 import java.util.Scanner;
+
+import br.com.alura.CommandExecutor;
+import br.com.alura.domain.abrigo.core.CadastrarAbrigoCommand;
+import br.com.alura.domain.abrigo.core.ListarAbrigoCommand;
+import br.com.alura.domain.pet.core.ImportarPetsAbrigoCommand;
+import br.com.alura.domain.pet.core.ListarPetsAbrigoCommand;
 
 public class AdopetConsoleApplication {
 

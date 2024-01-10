@@ -1,4 +1,4 @@
-package br.com.alura.domain;
+package br.com.alura.domain.pet.core.model;
 
 public class Pet {
     private Long id;

@@ -1,7 +1,7 @@
-package br.com.alura;
+package br.com.alura.domain.pet.core;
 
-import br.com.alura.client.ClientHttpConfiguration;
-import br.com.alura.service.PetService;
+import br.com.alura.Command;
+import br.com.alura.infrastructure.ClientHttpConfiguration;
 
 public class ListarPetsAbrigoCommand implements Command{
 

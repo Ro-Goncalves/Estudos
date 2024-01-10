@@ -1,4 +1,4 @@
-package br.com.alura.service;
+package br.com.alura.domain.abrigo.core;
 
 import java.net.http.HttpResponse;
 import java.util.Arrays;
@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.alura.client.ClientHttpConfiguration;
-import br.com.alura.domain.Abrigo;
+import br.com.alura.domain.abrigo.core.model.Abrigo;
+import br.com.alura.infrastructure.ClientHttpConfiguration;
 
 public class AbrigoService {
     private ClientHttpConfiguration client;

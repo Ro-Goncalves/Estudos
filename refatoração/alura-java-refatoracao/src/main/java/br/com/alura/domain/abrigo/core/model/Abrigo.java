@@ -1,6 +1,8 @@
-package br.com.alura.domain;
+package br.com.alura.domain.abrigo.core.model;
 
 import java.util.List;
+
+import br.com.alura.domain.pet.core.model.Pet;
 
 public class Abrigo {
     private String nome;

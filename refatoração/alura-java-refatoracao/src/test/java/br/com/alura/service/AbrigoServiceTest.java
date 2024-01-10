@@ -12,8 +12,9 @@ import java.net.http.HttpResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.alura.client.ClientHttpConfiguration;
-import br.com.alura.domain.Abrigo;
+import br.com.alura.domain.abrigo.core.AbrigoService;
+import br.com.alura.domain.abrigo.core.model.Abrigo;
+import br.com.alura.infrastructure.ClientHttpConfiguration;
 
 public class AbrigoServiceTest {
     private ClientHttpConfiguration client;

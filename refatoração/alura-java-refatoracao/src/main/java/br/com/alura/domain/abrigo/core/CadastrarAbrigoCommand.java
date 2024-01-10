@@ -1,7 +1,7 @@
-package br.com.alura;
+package br.com.alura.domain.abrigo.core;
 
-import br.com.alura.client.ClientHttpConfiguration;
-import br.com.alura.service.AbrigoService;
+import br.com.alura.Command;
+import br.com.alura.infrastructure.ClientHttpConfiguration;
 
 public class CadastrarAbrigoCommand implements Command{
 

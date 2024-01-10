@@ -1,4 +1,4 @@
-package br.com.alura.client;
+package br.com.alura.infrastructure;
 
 import java.net.URI;
 import java.net.http.HttpClient;
