@@ -24,7 +24,27 @@ Dentro de cada uma dessas pastas voltamos ao **P&A**, temos os diretórios: **ap
 
 ### Fase 1
 
-Primeiro eu criaria os diretórios do projeto, e colocaria as classes onde eu acho que deveria. Refatoração é assim, ao menos para mim, vamos fazendo a aprendendo com o tempo. Na camada de de aplicação eu criria o diretório cli
+Primeiro eu criaria os diretórios do projeto, e colocaria as classes onde eu acho que deveria. Refatoração é assim, ao menos para mim, vamos fazendo a aprendendo com o tempo. Na camada de de aplicação eu criei o diretório cli e coloquei a classe `AdopetConsoleApplication` nela. Na camada de infraestrutura eu coloquei a classe `ClientHttpConfiguration`. Criei dois dominos o pet e o abrigo, coloquei os arquivos referente a eles no diretório core dessa camada.
+
+>Nesse ponto eu não sei o que fazer com o modelo `Abrigo`, pois ele tem uma lista de `Pet`, que está e outro domino.  
+A questão:  
+O modelo de um dominio, pode ter uma referencia do modelo de outro dominio?  
+Creio que não. Tenho uma possível solução, por hora, vida que segue.
+
+As classes `Command` e `CommandExecutor` estão soltar por aí, já eu vejo onde coloca-las.
+
+### Fase 2
+
+Uma das primeiras coisas que faria e remover aquilo que considere responsabilidade da camada de **Infrastructure**.
+
+```java
+String uri = "http://localhost:8080/abrigos/" +idOuNome +"/pets";        
+    HttpResponse<String> response = client.dispararRequisicaoGet(uri);
+    int statusCode = response.statusCode();
+    if (statusCode == 404 || statusCode == 500) {
+        System.out.println("ID ou nome não cadastrado!");
+    }
+```
 
 ## Referências
 

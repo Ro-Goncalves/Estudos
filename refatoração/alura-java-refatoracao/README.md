@@ -91,4 +91,4 @@ Só quero descrever o que vi, e colocar algumas referências.
 - [JOÃO ROBERTO PAIXÃO, O que é SOLID: O guia completo para você entender os 5 princípios da POO](https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530)
 - [REFACTORING GURU, Command](https://refactoring.guru/pt-br/design-patterns/command)
 - [ALURA - Java e refatoração: melhorando códigos com boas práticas](https://www.alura.com.br/conteudo/java-refatoracao-melhorando-codigos-boas-praticas)
-  
+- [LUCAS PALHARES BARBOSA - Introdução aos conceitos de refatoração](https://desenvolvimento.shift.com.br/introdu%C3%A7%C3%A3o-aos-conceitos-de-refatora%C3%A7%C3%A3o-61027c8127e4)
