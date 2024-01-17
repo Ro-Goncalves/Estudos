@@ -83,35 +83,14 @@ Primeiro, criar a classe `AbrigoEmailCreator` com os métodos `emailSolicitar`, 
 
 ## O padrão Data Transfer Object
 
-A controller não pode receber nem devolver a entidade JPA
+O mundo externo não deve conhecer detalhes do mundo interno, logo, não podemos retornar nossa classe do modelo na API, e nem receber ela como entrada. Temos um padrão de projeto que ajuda com isso, o DTO. Ele é relativamente simples de entender, a controller recebe e retorna um DTO.
 
 ## Validações Flexíveis
 
+Quando temos um bando de ifs fazendo algo em nosso código, eles são bons candidados à utilização dos padrões **Strategy e Chain of Responsibility**.
 
+## Referências
 
-## 🎨 Layout
-
-O projeto desse repositório é apenas a API Backend, mas existe um figma com o layout que está disponível neste link: <a href="https://www.figma.com/file/TlfkDoIu8uyjZNla1T8TpH?embed_host=notion&kind=&node-id=518%3A11&t=esSUkfGQEWUeUASj-1&type=design&viewer=1">Layout no Figma</a>
-
----
-
-## 🛠 Tecnologias
-
-As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do projeto:
-
-- **[Java 17](https://www.oracle.com/java)**
-- **[Spring Boot 3](https://spring.io/projects/spring-boot)**
-- **[Maven](https://maven.apache.org)**
-- **[MySQL](https://www.mysql.com)**
-- **[Hibernate](https://hibernate.org)**
-- **[Flyway](https://flywaydb.org)**
-
----
-
-## 📝 Licença
-
-O projeto desse repositório foi desenvolvido por [Alura](https://www.alura.com.br) e utilizado nos cursos de boas práticas de programação com Java.
-
-Instrutor: [Rodrigo Ferreira](https://cursos.alura.com.br/user/rodrigo-ferreira)
-
----
+* [GITHUB - Iluwatar - data transfer object](https://github.com/iluwatar/java-design-patterns/tree/master/data-transfer-object)
+* [GITHUB - Iluwatar - strategy](https://github.com/iluwatar/java-design-patterns/tree/master/strategy)
+* [GITHUB - Iluwatar - chain of responsibility](https://github.com/iluwatar/java-design-patterns/tree/master/chain-of-responsibility)
