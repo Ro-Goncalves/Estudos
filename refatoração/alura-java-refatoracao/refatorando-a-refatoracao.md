@@ -14,7 +14,7 @@ E essa é parte do meu pensamento, e uma luta interna também:
 
 >Não temos que saber a fundo como tudo funciona, o mais importante e ter uma ideia e colocar em prática, assim você vai expandindo seu conhecimento aos poucos, vendo os buracos em seu conhecimento.
 
-### O inicio
+## O inicio
 
 É fácil ver que existem 3 grandes repositórios no projeto: **application, domain, infrastructure**. Qualquer Google que você der, vai ver que essa é a estrutura do **P&A**, a primeira camada guia o dominio, o dominio tem as regras de negócio e utiliza a ultima para se comunicar com o mundo externo, esse é um **TL;DR**.
 
@@ -22,7 +22,7 @@ Uma outra pasta importante, nesse projeto, é a **domain**, nela vemos que exist
 
 Dentro de cada uma dessas pastas voltamos ao **P&A**, temos os diretórios: **application, core, infrastructure**. Em application temos as `Controllers`, em core a regra de negócio e em infrastructure a comunicação com o mundo externo. Para saber mais sobre esse projeto, procurem o artigo dele, eu o perdi, sim - sou uma anta. Claro que criar tudo isso nesse projeto pegueno pode nem fazer sentido, foda-se, quero me forçar a fazer algo novo, e com isso aprender alguam coisa.
 
-### Fase 1
+## Fase 1
 
 Primeiro eu criaria os diretórios do projeto, e colocaria as classes onde eu acho que deveria. Refatoração é assim, ao menos para mim, vamos fazendo a aprendendo com o tempo. Na camada de de aplicação eu criei o diretório cli e coloquei a classe `AdopetConsoleApplication` nela. Na camada de infraestrutura eu coloquei a classe `ClientHttpConfiguration`. Criei dois dominos o pet e o abrigo, coloquei os arquivos referente a eles no diretório core dessa camada.
 
@@ -33,19 +33,55 @@ Creio que não. Tenho uma possível solução, por hora, vida que segue.
 
 As classes `Command` e `CommandExecutor` estão soltar por aí, já eu vejo onde coloca-las.
 
-### Fase 2
+## Fase 2
 
 Uma das primeiras coisas que faria e remover aquilo que considere responsabilidade da camada de **Infrastructure**.
+Para começar a fazer isso, primeiro refatorei a classe `ClientHttpConfiguration`.
 
 ```java
-String uri = "http://localhost:8080/abrigos/" +idOuNome +"/pets";        
-    HttpResponse<String> response = client.dispararRequisicaoGet(uri);
-    int statusCode = response.statusCode();
-    if (statusCode == 404 || statusCode == 500) {
-        System.out.println("ID ou nome não cadastrado!");
+public class ClientHttpConfiguration implements Client{
+
+    @Override
+    public ClientRespose handle(GetRequest getRequest){        
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(getRequest.getUri()))
+            .method("GET", HttpRequest.BodyPublishers.noBody())
+            .build();
+
+        return toClientResponse(sender(request));
     }
+
+    @Override
+    public ClientRespose handle(PostRequest postRequest) {       
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(postRequest.getUri()))
+            .header("Content-Type", "application/json")
+            //postRequest.getRequestBody() é o json que será passado para o post
+            .method("POST", HttpRequest.BodyPublishers.ofString(postRequest.getRequestBody()))
+            .build();
+       
+        return toClientResponse(sender(request));
+    }
+
+    //Separei essa parte pois era comum aos dois métodos.
+    private HttpResponse<String> sender( HttpRequest request ){
+        HttpClient client = HttpClient.newHttpClient();
+        try {
+            return client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (Exception e) {
+            throw new ClientException(e);
+        }
+    }
+}
 ```
+
+As classes de suporte podem ser vistas no repositório.
+
+## Fase 3
+
+Agora vamos aos nossos domínios, iniciemo pelo abrigo. A classe `AbrigoService` que está em **core** faz duas coisas *cadastrarAbrigo* e *listarAbrigo*. A parte que faz a chamada na APi, para mim é responsabilidade da camada de infraestrutura. Por isso, vamos passar para ela.
 
 ## Referências
 
 -[GIT - wkrzywiec - library-hexagonal](https://github.com/wkrzywiec/library-hexagonal)
+-[DEVMEDIA - Introdução ao Jacson objectmapper](https://www.devmedia.com.br/introducao-ao-jackson-objectmapper/43174)

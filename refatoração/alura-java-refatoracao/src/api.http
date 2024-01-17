@@ -1,0 +1,12 @@
+###
+GET http://localhost:8080/abrigos
+
+###
+POST http://localhost:3000/stock-outputs
+Content-Type: application/json
+
+{
+    "product_id": 3,
+    "quantity": 10,
+    "date": "2000-01-01"
+}

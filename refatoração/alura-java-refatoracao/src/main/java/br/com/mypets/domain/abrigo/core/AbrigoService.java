@@ -1,56 +1,46 @@
 package br.com.mypets.domain.abrigo.core;
 
-import java.net.http.HttpResponse;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import br.com.mypets.domain.abrigo.core.model.Abrigo;
-import br.com.mypets.infrastructure.ClientHttpConfiguration;
+import br.com.mypets.domain.abrigo.infrastructure.AbrigoDataBaseAdapter;
+import br.com.mypets.domain.abrigo.infrastructure.AbrigoNaoLocalizadoException;
 
 public class AbrigoService {
-    private ClientHttpConfiguration client;
+    private AbrigoDataBaseAdapter adapter;
 
-    public AbrigoService(ClientHttpConfiguration client) {
-        this.client = client;
+    public AbrigoService(AbrigoDataBaseAdapter adapter) {
+        this.adapter = adapter;
     }
 
     public void cadastrarAbrigo() throws Exception{
+        var scanner = new Scanner(System.in);
+
         System.out.println("Digite o nome do abrigo:");
-        String nome = new Scanner(System.in).nextLine();
+        String nome = scanner.nextLine();
         System.out.println("Digite o telefone do abrigo:");
-        String telefone = new Scanner(System.in).nextLine();
+        String telefone = scanner.nextLine();
         System.out.println("Digite o email do abrigo:");
-        String email = new Scanner(System.in).nextLine();
+        String email = scanner.nextLine();
 
-        var abrigo = new Abrigo(nome, telefone, email);
-        
-        String uri = "http://localhost:8080/abrigos";
-        HttpResponse<String> response = client.dispararRequisicaoPost(uri, abrigo);
+        scanner.close();
 
-        int statusCode = response.statusCode();
-        String responseBody = response.body();
-        if (statusCode == 200) {
-            System.out.println("Abrigo cadastrado com sucesso!");
-            System.out.println(responseBody);
-        } else if (statusCode == 400 || statusCode == 500) {
-            System.out.println("Erro ao cadastrar o abrigo:");
-            System.out.println(responseBody);
-        }
+        var abrigo = new Abrigo(nome, telefone, email);        
+        adapter.cadastrarAbrigo(abrigo);
     }
 
-    public void listarAbrigo() throws Exception{       ;
-        // String uri = "http://localhost:8080/abrigos";        
-        // String responseBody = client.dispararRequisicaoGet(uri).body();
-        // var arrayAbrigos = new ObjectMapper().readValue(responseBody, Abrigo[].class);
-        // var listAbrigos = Arrays.stream(arrayAbrigos).toList();
-        if (listAbrigos.isEmpty()) {
-            System.out.println("Não há Abrigos cadastrados");
-        } else {
-           mostrarAbrigos(listAbrigos);
-        }
+    public void listarAbrigo() throws Exception{
+        try {
+            var listAbrigos = adapter.consultarAbrigos();    
+            if (listAbrigos.isEmpty()) {
+                System.out.println("Não há Abrigos cadastrados");
+            } else {
+               mostrarAbrigos(listAbrigos);
+            }            
+        } catch (AbrigoNaoLocalizadoException e) {
+            System.out.println(e.getMessage());
+        }   
     }
 
     private void mostrarAbrigos(List<Abrigo> listAbrigos){
