@@ -89,6 +89,10 @@ O mundo externo não deve conhecer detalhes do mundo interno, logo, não podemos
 
 Quando temos um bando de ifs fazendo algo em nosso código, eles são bons candidados à utilização dos padrões **Strategy e Chain of Responsibility**.
 
+## Otimizações na camada de persistência
+
+
+
 ## Referências
 
 * [GITHUB - Iluwatar - data transfer object](https://github.com/iluwatar/java-design-patterns/tree/master/data-transfer-object)
