@@ -1,13 +1,13 @@
-package br.com.alura.mypets.api;
+package br.com.alura.mypets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AdopetApiApplication {
+public class MyPetsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AdopetApiApplication.class, args);
+		SpringApplication.run(MyPetsApplication.class, args);
 	}
 
 }

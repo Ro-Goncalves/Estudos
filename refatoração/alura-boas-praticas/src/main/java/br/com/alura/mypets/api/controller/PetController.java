@@ -16,19 +16,19 @@ import java.util.List;
 @RequestMapping("/pets")
 public class PetController {
 
-    @Autowired
-    private PetRepository repository;
+    // @Autowired
+    // private PetRepository repository;
 
-    @GetMapping
-    public ResponseEntity<List<Pet>> listarTodosDisponiveis() {
-        List<Pet> pets = repository.findAll();
-        List<Pet> disponiveis = new ArrayList<>();
-        for (Pet pet : pets) {
-            if (pet.getAdotado() == false) {
-                disponiveis.add(pet);
-            }
-        }
-        return ResponseEntity.ok(disponiveis);
-    }
+    // @GetMapping
+    // public ResponseEntity<List<Pet>> listarTodosDisponiveis() {
+    //     List<Pet> pets = repository.findAll();
+    //     List<Pet> disponiveis = new ArrayList<>();
+    //     for (Pet pet : pets) {
+    //         if (pet.getAdotado() == false) {
+    //             disponiveis.add(pet);
+    //         }
+    //     }
+    //     return ResponseEntity.ok(disponiveis);
+    // }
 
 }
