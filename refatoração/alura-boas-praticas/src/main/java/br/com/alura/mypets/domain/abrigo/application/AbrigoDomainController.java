@@ -1,44 +1,49 @@
-package br.com.alura.mypets.api.controller;
+package br.com.alura.mypets.domain.abrigo.application;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.alura.mypets.api.model.Abrigo;
 import br.com.alura.mypets.api.model.Pet;
-import br.com.alura.mypets.api.repository.AbrigoRepository;
+import br.com.alura.mypets.domain.abrigo.application.model.SalvarAbrigoCommand;
+import br.com.alura.mypets.domain.abrigo.core.AbrigoFacade;
+import br.com.alura.mypets.domain.abrigo.core.model.Abrigo;
+import br.com.alura.mypets.domain.abrigo.core.ports.incoming.SalvaAbrigo;
+import br.com.alura.mypets.domain.abrigo.infrastructure.AbrigoRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/abrigos")
-public class AbrigoController {
+public class AbrigoDomainController {
 
-    // @Autowired
-    // private AbrigoRepository repository;
-
+    @Qualifier("SalvaAbrigo")
+    private final SalvaAbrigo salvaAbrigo;
     // @GetMapping
     // public ResponseEntity<List<Abrigo>> listar() {
     //     return ResponseEntity.ok(repository.findAll());
     // }
 
-    // @PostMapping
-    // @Transactional
-    // public ResponseEntity<String> cadastrar(@RequestBody @Valid Abrigo abrigo) {
-    //     boolean nomeJaCadastrado = repository.existsByNome(abrigo.getNome());
-    //     boolean telefoneJaCadastrado = repository.existsByTelefone(abrigo.getTelefone());
-    //     boolean emailJaCadastrado = repository.existsByEmail(abrigo.getEmail());
+    public AbrigoDomainController(SalvaAbrigo salvaAbrigo) {
+        this.salvaAbrigo = salvaAbrigo;
+    }
 
-    //     if (nomeJaCadastrado || telefoneJaCadastrado || emailJaCadastrado) {
-    //         return ResponseEntity.badRequest().body("Dados já cadastrados para outro abrigo!");
-    //     } else {
-    //         repository.save(abrigo);
-    //         return ResponseEntity.ok().build();
-    //     }
-    // }
+    @PostMapping("")
+    @Transactional
+    public ResponseEntity<String> cadastrar(@RequestBody SalvarAbrigoCommand command) {
+        try {
+            salvaAbrigo.handle(command);
+            return new ResponseEntity<>("O abrigo foi cadastrado com sucesso", HttpStatus.CREATED);            
+        } catch (Exception e) {
+            return new ResponseEntity<>("O abrigo não foi cadastrado - " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }       
+    }
+    
 
     // @GetMapping("/{idOuNome}/pets")
     // public ResponseEntity<List<Pet>> listarPets(@PathVariable String idOuNome) {

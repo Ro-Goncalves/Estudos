@@ -1,4 +1,4 @@
-package br.com.alura.mypets.api.controller;
+package br.com.alura.mypets.domain.pet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
