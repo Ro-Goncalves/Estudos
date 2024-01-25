@@ -12,3 +12,16 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/abrigos
+
+###
+POST http://localhost:8080/pets
+Content-Type: application/json
+
+{
+    "tipo": "CACHORRO",
+    "nome": "Cachorro 01",
+    "raca": "Raça 01",
+    "idade": 3,
+    "cor": "Cor 01",
+    "peso": 12.32
+}

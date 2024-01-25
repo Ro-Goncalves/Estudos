@@ -1,16 +1,14 @@
 package br.com.alura.mypets.domain.pet.core.model;
 
-import br.com.alura.mypets.api.model.TipoPet;
-
 public class SalvarPetCommand {
-    private TipoPet tipo;
+    private String tipo;
     private String nome;
     private String raca;
     private Integer idade;
     private String cor;
     private Float peso;
     
-    public SalvarPetCommand(TipoPet tipo, String nome, String raca, Integer idade, String cor, Float peso) {
+    public SalvarPetCommand(String tipo, String nome, String raca, Integer idade, String cor, Float peso) {
         this.tipo = tipo;
         this.nome = nome;
         this.raca = raca;
@@ -19,7 +17,7 @@ public class SalvarPetCommand {
         this.peso = peso;
     }
 
-    public TipoPet getTipo() {
+    public String getTipo() {
         return tipo;
     }
 

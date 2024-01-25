@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import br.com.alura.mypets.infrastructure.AbrigoDomainConfig;
+import br.com.alura.mypets.infrastructure.PetDomainConfig;
 
 @SpringBootApplication
 @EnableScheduling //Cria tipo um agendamento de execução
@@ -29,7 +30,8 @@ public class MyBean {
 }
  */
 @Import({
-	AbrigoDomainConfig.class
+	AbrigoDomainConfig.class,
+    PetDomainConfig.class
 })
 public class MyPetsApplication {
 

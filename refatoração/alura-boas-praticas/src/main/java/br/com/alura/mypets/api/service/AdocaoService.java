@@ -13,9 +13,9 @@ import br.com.alura.mypets.api.dto.SolicitacaoAdocaoDto;
 import br.com.alura.mypets.api.model.Adocao;
 import br.com.alura.mypets.api.model.StatusAdocao;
 import br.com.alura.mypets.api.repository.AdocaoRepository;
-import br.com.alura.mypets.api.repository.PetRepository;
 import br.com.alura.mypets.api.repository.TutorRepository;
 import br.com.alura.mypets.api.validacoes.ValidacaoSolicitadaoAdocao;
+import br.com.alura.mypets.domain.pet.infrastructure.PetRepository;
 
 @Service
 public class AdocaoService {

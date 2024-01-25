@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.alura.mypets.api.dto.SolicitacaoAdocaoDto;
-import br.com.alura.mypets.api.repository.PetRepository;
 import br.com.alura.mypets.api.service.ValidacaoException;
+import br.com.alura.mypets.domain.pet.infrastructure.PetRepository;
 
 @Component
 public class ValidacaoPetDisponivel implements ValidacaoSolicitadaoAdocao{

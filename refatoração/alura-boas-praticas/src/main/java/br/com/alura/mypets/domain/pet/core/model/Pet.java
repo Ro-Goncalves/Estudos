@@ -3,7 +3,6 @@ package br.com.alura.mypets.domain.pet.core.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import br.com.alura.mypets.api.model.Adocao;
-import br.com.alura.mypets.api.model.TipoPet;
 import br.com.alura.mypets.domain.abrigo.core.model.Abrigo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -56,6 +55,20 @@ public class Pet {
     @OneToOne(mappedBy = "pet")
     @JsonBackReference("adocao_pets")
     private Adocao adocao;
+
+    public Pet(@NotNull TipoPet tipo, @NotBlank String nome, @NotBlank String raca, @NotNull Integer idade,
+            @NotBlank String cor, @NotNull Float peso) {
+        this.tipo = tipo;
+        this.nome = nome;
+        this.raca = raca;
+        this.idade = idade;
+        this.cor = cor;
+        this.peso = peso;
+        this.adotado = Boolean.FALSE;
+    }
+
+    public Pet() {
+    }
 
     @Override
     public boolean equals(Object o) {
