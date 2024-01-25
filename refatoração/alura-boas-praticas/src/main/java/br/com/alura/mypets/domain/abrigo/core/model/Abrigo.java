@@ -2,7 +2,7 @@ package br.com.alura.mypets.domain.abrigo.core.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import br.com.alura.mypets.api.model.Pet;
+import br.com.alura.mypets.domain.pet.core.model.Pet;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

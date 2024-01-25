@@ -2,8 +2,8 @@ package br.com.alura.mypets.domain.abrigo.core.ports.outgoing;
 
 import java.util.List;
 
-import br.com.alura.mypets.api.model.Pet;
 import br.com.alura.mypets.domain.abrigo.core.model.Abrigo;
+import br.com.alura.mypets.domain.pet.core.model.Pet;
 
 public interface AbrigoDataBase {
     void salvar(Abrigo abrigo);

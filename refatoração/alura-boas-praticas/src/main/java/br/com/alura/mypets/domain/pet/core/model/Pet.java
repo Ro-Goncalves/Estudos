@@ -1,7 +1,9 @@
-package br.com.alura.mypets.api.model;
+package br.com.alura.mypets.domain.pet.core.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import br.com.alura.mypets.api.model.Adocao;
+import br.com.alura.mypets.api.model.TipoPet;
 import br.com.alura.mypets.domain.abrigo.core.model.Abrigo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

@@ -1,1 +1,14 @@
 GET http://localhost:8080/
+
+###
+POST http://localhost:8080/abrigos
+Content-Type: application/json
+
+{
+    "nome": "Abrigo Teste 2",
+    "telefone": "4312341235",
+    "email": "email2@email.com"
+}
+
+###
+GET http://localhost:8080/abrigos

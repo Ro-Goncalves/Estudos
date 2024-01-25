@@ -7,6 +7,6 @@ import br.com.alura.mypets.domain.abrigo.core.model.Abrigo;
 
 @Repository
 public interface AbrigoRepository extends JpaRepository<Abrigo, Long> {
-    boolean existsByNomeAndTelefoneAndEmail(Abrigo abrigo);    
+    boolean existsByNomeAndTelefoneAndEmail(String nome, String telefone, String email);    
     Abrigo findByNome(String nome);
 }
