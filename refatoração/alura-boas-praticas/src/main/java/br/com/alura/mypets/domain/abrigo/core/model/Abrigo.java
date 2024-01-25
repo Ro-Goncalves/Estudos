@@ -1,6 +1,8 @@
-package br.com.alura.mypets.api.model;
+package br.com.alura.mypets.domain.abrigo.core.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import br.com.alura.mypets.api.model.Pet;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -35,6 +37,17 @@ public class Abrigo {
     @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference("abrigo_pets")
     private List<Pet> pets;
+
+    public Abrigo() {
+    }
+
+    public Abrigo(@NotBlank String nome,
+            @NotBlank @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}") String telefone,
+            @NotBlank @Email String email) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+    }
 
     @Override
     public boolean equals(Object o) {

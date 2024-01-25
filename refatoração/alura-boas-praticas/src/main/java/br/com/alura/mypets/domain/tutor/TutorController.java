@@ -1,4 +1,4 @@
-package br.com.alura.mypets.api.controller;
+package br.com.alura.mypets.domain.tutor;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
