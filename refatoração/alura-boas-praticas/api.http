@@ -18,6 +18,7 @@ POST http://localhost:8080/pets
 Content-Type: application/json
 
 {
+    "idAbrigo": 1,
     "tipo": "CACHORRO",
     "nome": "Cachorro 01",
     "raca": "Raça 01",

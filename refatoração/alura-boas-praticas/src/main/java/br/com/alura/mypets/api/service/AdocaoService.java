@@ -46,9 +46,9 @@ public class AdocaoService {
         repository.save(adocao);
 
         emailService.enviarEmail(
-            adocao.getPet().getAbrigo().getEmail(),
+            adocao.getPet().getIdAbrigo().getEmail(),
             "Solicitação de adoção",
-            "Olá " +adocao.getPet().getAbrigo().getNome() +"!\n\nUma solicitação de adoção foi registrada hoje para o pet: " +adocao.getPet().getNome() +". \nFavor avaliar para aprovação ou reprovação."
+            "Olá " +adocao.getPet().getIdAbrigo().getNome() +"!\n\nUma solicitação de adoção foi registrada hoje para o pet: " +adocao.getPet().getNome() +". \nFavor avaliar para aprovação ou reprovação."
         );
     }
 
@@ -57,9 +57,9 @@ public class AdocaoService {
         adocao.marcarComoAprovado();             
 
         emailService.enviarEmail(
-            adocao.getPet().getAbrigo().getEmail(),
+            adocao.getPet().getIdAbrigo().getEmail(),
             "Adoção aprovada",
-            "Parabéns " +adocao.getTutor().getNome() +"!\n\nSua adoção do pet " +adocao.getPet().getNome() +", solicitada em " +adocao.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +", foi aprovada.\nFavor entrar em contato com o abrigo " +adocao.getPet().getAbrigo().getNome() +" para agendar a busca do seu pet."
+            "Parabéns " +adocao.getTutor().getNome() +"!\n\nSua adoção do pet " +adocao.getPet().getNome() +", solicitada em " +adocao.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +", foi aprovada.\nFavor entrar em contato com o abrigo " +adocao.getPet().getIdAbrigo().getNome() +" para agendar a busca do seu pet."
         );
     }
 
@@ -68,9 +68,9 @@ public class AdocaoService {
         adocao.marcarComoReprovada(dto.justificativa());      
 
         emailService.enviarEmail(
-            adocao.getPet().getAbrigo().getEmail(),
+            adocao.getPet().getIdAbrigo().getEmail(),
             "Adoção reprovada",
-            "Olá " +adocao.getTutor().getNome() +"!\n\nInfelizmente sua adoção do pet " +adocao.getPet().getNome() +", solicitada em " +adocao.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +", foi reprovada pelo abrigo " +adocao.getPet().getAbrigo().getNome() +" com a seguinte justificativa: " +adocao.getJustificativaStatus()
+            "Olá " +adocao.getTutor().getNome() +"!\n\nInfelizmente sua adoção do pet " +adocao.getPet().getNome() +", solicitada em " +adocao.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) +", foi reprovada pelo abrigo " +adocao.getPet().getIdAbrigo().getNome() +" com a seguinte justificativa: " +adocao.getJustificativaStatus()
         );
 
     }

@@ -41,6 +41,9 @@ public class Abrigo {
     public Abrigo() {
     }
 
+    public Abrigo(Long id) {
+        this.id = id;
+    }
     public Abrigo(@NotBlank String nome,
             @NotBlank @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}") String telefone,
             @NotBlank @Email String email) {

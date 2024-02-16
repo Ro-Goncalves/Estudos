@@ -1,6 +1,7 @@
 package br.com.alura.mypets.domain.pet.core.model;
 
 public class SalvarPetCommand {
+    private Long idAbrigo;
     private String tipo;
     private String nome;
     private String raca;
@@ -8,7 +9,8 @@ public class SalvarPetCommand {
     private String cor;
     private Float peso;
     
-    public SalvarPetCommand(String tipo, String nome, String raca, Integer idade, String cor, Float peso) {
+    public SalvarPetCommand(Long idAbrigo, String tipo, String nome, String raca, Integer idade, String cor, Float peso) {
+        this.idAbrigo = idAbrigo;
         this.tipo = tipo;
         this.nome = nome;
         this.raca = raca;
@@ -39,6 +41,10 @@ public class SalvarPetCommand {
 
     public Float getPeso() {
         return peso;
+    }
+
+    public Long getIdAbrigo() {
+        return idAbrigo;
     }
     
 }

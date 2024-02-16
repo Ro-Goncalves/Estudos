@@ -46,18 +46,19 @@ public class Pet {
 
     @Column(name = "adotado")
     private Boolean adotado;
-
-    @ManyToOne
-    @JsonBackReference("abrigo_pets")
-    @JoinColumn(name = "abrigo_id")
-    private Abrigo abrigo;
+    
+    @NotNull
+    @Column(name = "abrigo_id")
+    private Long idAbrigo;
 
     @OneToOne(mappedBy = "pet")
     @JsonBackReference("adocao_pets")
     private Adocao adocao;
 
-    public Pet(@NotNull TipoPet tipo, @NotBlank String nome, @NotBlank String raca, @NotNull Integer idade,
+    public Pet(@NotNull Long idAbrigo, @NotNull TipoPet tipo, @NotBlank String nome, @NotBlank String raca, @NotNull Integer idade,
             @NotBlank String cor, @NotNull Float peso) {
+        
+        this.idAbrigo = idAbrigo;
         this.tipo = tipo;
         this.nome = nome;
         this.raca = raca;
@@ -147,12 +148,12 @@ public class Pet {
         this.adotado = adotado;
     }
 
-    public Abrigo getAbrigo() {
-        return abrigo;
+    public Long getIdAbrigo() {
+        return idAbrigo;
     }
 
-    public void setAbrigo(Abrigo abrigo) {
-        this.abrigo = abrigo;
+    public void setIdAbrigo(Long abrigo) {
+        this.idAbrigo = abrigo;
     }
 
     public Adocao getAdocao() {

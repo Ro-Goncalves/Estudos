@@ -4,6 +4,7 @@ public class PetConverter {
 
     public static Pet toPet(SalvarPetCommand command) {        
         return new Pet(
+            command.getIdAbrigo(),
             TipoPet.valueOf(command.getTipo()), 
             command.getNome(), 
             command.getRaca(), 
