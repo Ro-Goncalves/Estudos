@@ -13,20 +13,22 @@ import br.com.alura.adopet.api.model.TipoPet;
 
 public class CalculadoraProbabilidadeAdocaoTest {
     @Test
-    void testCalcular() {
-        //idade 4 anos e 4kg - ALTA
+    void quandoPetGatoPesoBaixoIdadeBaixa_deveRetornarProbabilidadeAlta() {
+        //Given
         var calculador = new CalculadoraProbabilidadeAdocao();
+
+        //When
         var probabilidade = calculador.calcular(new Pet(
             new CadastroPetDto(TipoPet.GATO, "Nome Pet", "Raça Pet", 4, "Cor Pet", 4.0f),
             new Abrigo(new CadastroAbrigoDto("Nome Abrigo", "Telefone Abrigo", "E-Mail Abrigo"))
         ));
 
+        //Then
         assertEquals(ProbabilidadeAdocao.ALTA, probabilidade);
     }
 
     @Test
-    void testCalcular2() {
-        //idade 15 anos e 4kg - MEDIA
+    void quandoPetGatoPesoBaixoIdadeAuta_deveRetornarProbabilidadeMedia() {
         var calculador = new CalculadoraProbabilidadeAdocao();
         var probabilidade = calculador.calcular(new Pet(
             new CadastroPetDto(TipoPet.GATO, "Nome Pet", "Raça Pet", 15, "Cor Pet", 4.0f),

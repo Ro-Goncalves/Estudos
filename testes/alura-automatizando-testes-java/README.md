@@ -10,6 +10,40 @@ Não é necessário testar tudo no código, e sim aquilo que tem alguma regra de
 
 Existe uma tal de pirâmide de testes, que é a ordem em que os testes devem ser executados. Então começemos do começo, os teste unitários. Neles testamos toda nossa lógica criando cenários para cada casso possível.
 
+Vai acontecer momentos em que os testes irão falhar, e esperodo que o bug seja arrumado, ele pode até mesmo estar no teste que foi escrito.
+
+### Nomes de testes
+
+Para mim, nomes importam. Então eu tento criar nomes bem descritivos para meus testes. Ao longo do tempo criei o seguite padrão:
+
+>quandoAlgumaCoisa_deveAlgumaCoisa.
+
+Por exemplo: `quandoPetGatoPesoBaixoIdadeBaixa_deveRetornarProbabilidadeAlta()` e `quandoPetGatoPesoBaixoIdadeAuta_deveRetornarProbabilidadeMedia()`
+
+### Fluxo
+
+Os testes tentem a seguir o mesmo caminho, primeiro criamos aquilo que será usado no cenário, depois executamos alguma ação e por fim verificamos se tudo ocorreu como esperado.
+
+Alguns utilizando **ARRANGE, ACT e ASSERT** para separar as partes do código. Eu gosto de usar **Given, When e Then**, tudo questão de gosto.
+
+```java
+@Test
+    void quandoPetGatoPesoBaixoIdadeBaixa_deveRetornarProbabilidadeAlta() {
+        //Given
+        var calculador = new CalculadoraProbabilidadeAdocao();
+
+        //When
+        var probabilidade = calculador.calcular(new Pet(
+            //Sim, essas instância de classes deveriam estar em Given
+            new CadastroPetDto(TipoPet.GATO, "Nome Pet", "Raça Pet", 4, "Cor Pet", 4.0f),
+            new Abrigo(new CadastroAbrigoDto("Nome Abrigo", "Telefone Abrigo", "E-Mail Abrigo"))
+        ));
+
+        //Then
+        assertEquals(ProbabilidadeAdocao.ALTA, probabilidade);
+    }
+```
+
 ## Junit
 
 ### Pacote Principal
@@ -39,3 +73,4 @@ Estão presentes no pacote  `org.junit.jupiter.api.Assertions` e são responsáv
 ## Tags
 
 Testes Automatizados
+Testes de Unidade
