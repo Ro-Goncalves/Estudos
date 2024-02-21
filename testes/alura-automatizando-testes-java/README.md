@@ -59,6 +59,56 @@ A anotação `@Test`, importada de `import org.junit.jupiter.api.Test` indica a 
 Estão presentes no pacote  `org.junit.jupiter.api.Assertions` e são responsáveis por indicar o resultado dos testes. Existem diversas assertions, mas as mais utilizadas são:
 
 - `assertEquals` - verifica se os dois valores são iguais.
+- `assertDoesNotThrow` - verifica se a execução não lançou uma `Exception`.
+- `assertThrows` - verifica ser a execuções lançou uma `Exception` expecifica.
+
+## Mockito
+
+Em alguns momentos será necessário utilizar classes dubles, fakes, qualquer nome que indique que é uma classe não real. Claro que a discução entre dipos de dubles é valida, mas nesse ponto, de quem está começando a estudar, metade é o dobro. Sendo assim, vamos utilizar os **Mocks** do *Mockito*
+
+### Mocks
+
+Podemos criar os **mocks** de duas formas, até onde sei. Com a classe `mock(Classe.class);` ou com a anotação `@Mock` em um atributo.
+
+```java
+@Mock
+private PetRepository mockedPetRepository;
+
+//OU
+
+var mockedClass = mock(Classe.class);
+```
+
+Para injetar o mock na classe que iremos testar podemos usar:
+
+```java
+@InjectMocks
+private ValidacaoPetDisponivel validacao;
+
+//OU
+
+var validacao = new ValidaçãoPetDisponível(mockedClass);
+```
+
+Quando optamos por usar as anotações é preciso indicar ao motor de teste que o **Mockito** deve controlar a classe, e para fazer isso, devemos usar uma outra anotaçãoi:
+
+```java
+@ExtendWith(MockitoExtension.class)
+public class ValidacaoPetDisponivelTest {
+}
+```
+
+### Simular uma chamada de um método com mocks
+
+```java
+when(mockedPetRepository.getReferenceById(anyLong())).thenReturn(pet);
+```
+
+Ao criar um mock devemos lembrar que ele é uma classe **fake**, não faz nada. Esse fato faz com que consigamos simular os retornos das chamadas dos métodos. E é isso que fizemos anteriormente. O método `when` irá executar o método quando algo acontecer, esse algo é passado como parâmetro para ele. `mockedPetRepository.getReferenceById(anyLong())` é isso que passamos ao método, veja que estamos invocando um método da classe `PetRepository` de um objeto que foi "mocado". Esse nosso método também recebe parâmetros. Como não estamos trabalhando com uma classe normal, e sim com um mock, podemos passar ao método invocado alguns paramtros especiais, nesse caso usamos  o `anyLong()` para indicar qualquer valor do tipo Long. Por fim, dizemos ao mock o que fazer após a chamada do método com o `thenReturn`.
+
+Meio que estamos falando o seguinte:
+
+>`mockedPetRepository`, quando você chamar o método `getReferenceById` recebendo qualquer **Long**, `anyLong()`, então retorno esse `pet`
 
 ## Tecnologias
 
@@ -69,6 +119,7 @@ Estão presentes no pacote  `org.junit.jupiter.api.Assertions` e são responsáv
 - **[Hibernate](https://hibernate.org)**
 - **[Flyway](https://flywaydb.org)**
 - **[Junit 5](https://junit.org/junit5/)**
+- **[Mockito](https://site.mockito.org/)**
 
 ## Tags
 

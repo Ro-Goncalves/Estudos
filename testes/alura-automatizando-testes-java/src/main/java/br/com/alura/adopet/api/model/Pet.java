@@ -32,7 +32,7 @@ public class Pet {
     private Abrigo abrigo;
 
     @OneToOne(mappedBy = "pet", fetch = FetchType.LAZY)
-    private Adocao adocao;
+    private Adocao adocao;  
 
     public Pet(){}
 
@@ -102,6 +102,10 @@ public class Pet {
 
     public Adocao getAdocao() {
         return adocao;
+    }
+
+    public void setAdotado(Boolean adotado) {
+        this.adotado = adotado;
     }
 
 }
