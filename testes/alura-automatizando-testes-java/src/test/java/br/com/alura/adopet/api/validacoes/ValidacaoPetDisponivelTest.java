@@ -1,5 +1,7 @@
 package br.com.alura.adopet.api.validacoes;
 
+import static br.com.alura.adopet.api.support.ClassesCriator.createPet;
+import static br.com.alura.adopet.api.support.ClassesCriator.createSolicitacaoAdocaoDto;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -11,12 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.alura.adopet.api.dto.CadastroPetDto;
-import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
 import br.com.alura.adopet.api.exception.ValidacaoException;
-import br.com.alura.adopet.api.model.Abrigo;
-import br.com.alura.adopet.api.model.Pet;
-import br.com.alura.adopet.api.model.TipoPet;
 import br.com.alura.adopet.api.repository.PetRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -52,20 +49,5 @@ public class ValidacaoPetDisponivelTest {
 
         //When - Then
         assertThrows(ValidacaoException.class, () -> validacao.validar(dto));
-    }
-
-    private SolicitacaoAdocaoDto createSolicitacaoAdocaoDto(){
-        return new SolicitacaoAdocaoDto(
-            1L,
-            1L,
-            "Motivo DTO"
-        );
-    }
-
-    private Pet createPet(){
-        return new Pet(
-            new CadastroPetDto(TipoPet.CACHORRO, "Nome Pet", "Raça Pet", 1, "Cor Pet", 1f),
-            new Abrigo()
-        );
-    }
+    }   
 }

@@ -35,7 +35,10 @@ public class AdocaoService {
     private List<ValidacaoSolicitacaoAdocao> validacoes;
 
     public void solicitar(SolicitacaoAdocaoDto dto) {
+        @SuppressWarnings("null")
         Pet pet = petRepository.getReferenceById(dto.idPet());
+        
+        @SuppressWarnings("null")
         Tutor tutor = tutorRepository.getReferenceById(dto.idTutor());
 
         validacoes.forEach(v -> v.validar(dto));

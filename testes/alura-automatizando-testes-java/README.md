@@ -110,6 +110,24 @@ Meio que estamos falando o seguinte:
 
 >`mockedPetRepository`, quando você chamar o método `getReferenceById` recebendo qualquer **Long**, `anyLong()`, então retorno esse `pet`
 
+### Usando Spys
+
+Para criar um espião podemos usar a anotação `@Spy`:
+
+```java
+@Spy
+private List<ValidacaoSolicitacaoAdocao> spyValidacoes = new ArrayList<>();
+```
+
+Da para verificar se o espião se comportou como esperado duma dessas formas:
+
+```java
+BDDMockito.then(validacaoSolicitacaoAdocao1).should().validar(dto);
+verify(validacaoSolicitacaoAdocao2).validar(dto);
+```
+
+
+
 ## Tecnologias
 
 - **[Java 17](https://www.oracle.com/java)**
