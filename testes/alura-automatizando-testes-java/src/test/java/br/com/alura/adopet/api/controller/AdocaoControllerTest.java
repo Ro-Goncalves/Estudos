@@ -2,6 +2,7 @@ package br.com.alura.adopet.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,6 @@ public class AdocaoControllerTest {
 
     @MockBean
     private AdocaoService adocaoService;
-
-    @Test
-    void testAprovar() {
-
-    }
-
-    @Test
-    void testReprovar() {
-
-    }
 
     @Test
     void quandoSolicitacaoDeAdocaoComErros_deveDevolverCodigo400() throws Exception{
@@ -72,4 +63,48 @@ public class AdocaoControllerTest {
         //Then
         assertEquals(200, resultado.getStatus());
     }
+
+    @Test
+    void quandoAprovarUmaAdocao_deveRetornarCodigo200() throws Exception {
+        //Given
+        var json = """
+                {
+                    "idAdocao":1
+                }
+                """;
+
+        //When
+        @SuppressWarnings("null")
+        var resultado = mvc.perform(
+            put("/adocoes/aprovar")
+            .content(json)
+            .contentType(MediaType.APPLICATION_JSON)
+        ).andReturn().getResponse();
+
+        //Then
+        assertEquals(200, resultado.getStatus());
+    }
+
+    @Test
+    void quandoReprovarUmaAdocao_deveRetornarCodigo200() throws Exception {
+        //Given
+        var json = """
+                {
+                    "idAdocao":1,
+                    "justificativa": "Cachorro chato de mais"
+                }
+                """;
+
+        //When
+        @SuppressWarnings("null")
+        var resultado = mvc.perform(
+            put("/adocoes/reprovar")
+            .content(json)
+            .contentType(MediaType.APPLICATION_JSON)
+        ).andReturn().getResponse();
+
+        //Then
+        assertEquals(200, resultado.getStatus());
+    }
+
 }
